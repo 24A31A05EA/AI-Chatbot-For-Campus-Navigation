@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus AI Navigation</title>
+<style>
+/* ---------- Body & Background Image ---------- */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url("{{ url_for('static', filename='images/pragati_college.jpg') }}") no-repeat center center/cover;
+  overflow: hidden;
+}
+
+/* ---------- Dark Overlay ---------- */
+body::before {
+  content: '';
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.55);
+  z-index:1;
+}
+
+/* ---------- Centered Hero ---------- */
+.hero {
+  position: relative;
+  z-index:2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  color: #fff;
+}
+
+/* ---------- Heading ---------- */
+.hero h1 {
+  font-size: 60px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00c3ff, #ffffff, #00c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0,195,255,0.4);
+  animation: fadeInUp 2s ease forwards;
+}
+
+/* ---------- Subtitle ---------- */
+.hero p {
+  font-size: 22px;
+  color: #e0e0e0;
+  margin-bottom: 40px;
+  opacity:0;
+  animation: fadeInUp 2s ease 0.5s forwards;
+}
+
+/* ---------- CTA Button ---------- */
+.hero .ai-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  font-size: 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #00c3ff, #0072ff);
+  box-shadow: 0 8px 20px rgba(0,195,255,0.5);
+  transition: all 0.3s ease;
+}
+
+.hero .ai-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,195,255,0.6);
+}
+
+/* ---------- Fade-in Animation ---------- */
+@keyframes fadeInUp {
+  0% { opacity:0; transform: translateY(20px); }
+  100% { opacity:1; transform: translateY(0); }
+}
+
+/* ---------- Optional tiny floating particles ---------- */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  animation: floatParticle 15s linear infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(100vh) translateX(0); opacity:0; }
+  10% { opacity:1; }
+  100% { transform: translateY(-10vh) translateX(50vw); opacity:0; }
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:768px){
+  .hero h1 { font-size: 42px; }
+  .hero p { font-size: 18px; }
+  .hero .ai-btn { font-size: 18px; padding: 12px 32px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Pragati Engineering College</h1>
+  <p>AI Based Campus Navigation Assistant</p>
+  <a href="/chatbot" class="ai-btn">🤖 Ask Campus AI</a>
+</div>
+
+<!-- Particles -->
+<script>
+const particleCount = 20;
+for(let i=0; i<particleCount; i++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random()*100 + 'vw';
+  p.style.top = Math.random()*100 + 'vh';
+  p.style.width = p.style.height = (Math.random()*3+2)+'px';
+  p.style.animationDuration = (10 + Math.random()*10)+'s';
+  document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
